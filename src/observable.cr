@@ -1,6 +1,10 @@
 
 module Gctest
   class Observable(T, U)
+    def self.from_array(array : Array(T))
+      ColdObservable(T, T).new(ArrayIterator.new array)
+    end
+
     def self.range(start : Int32, end : Int32)
       ColdObservable(Int32, Int32).new(RangeIterator.new(start, end))
     end
@@ -18,6 +22,16 @@ module Gctest
       end
 
       ary
+    end
+
+    def filter(&predicate : Proc(T, Bool))
+      iter = FilterIterator.new(@iter, predicate)
+      ColdObservable(T, T).new iter
+    end
+
+    def map(&selector : T -> U)
+      iter = MapIterator.new(@iter, selector)
+      ColdObservable(T, U).new iter
     end
 
     def repeat(count : Int32)

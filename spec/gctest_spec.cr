@@ -3,30 +3,6 @@ require "../gctest"
 
 describe Gctest do
 
-  it "list" do
-    list = Gctest::List(Int32).new
-    list.push_first 1
-    list.push_first 2
-    list.push_first 3
-    iter = list.iter
-    iter.next.should eq 3
-    iter.next.should eq 2
-    iter.next.should eq 1
-  end
-
-  it "repeat" do
-    logger = Debug::Logger.new
-
-    list = Gctest::List(Int32).new
-    list.push_first 1
-    list.push_first 2
-    list.push_first 3
-
-    rep = Gctest::RepeatIterator(Int32).new(list.iter, 3)
-    rep.each {|x| logger.push "#{x}"}
-
-    logger.log.should eq "321321321"
-  end
 
   it "repeat" do
     logger = Debug::Logger.new
@@ -55,5 +31,28 @@ describe Gctest do
     iter.next.should eq 16
     iter.next.should eq 25
     (iter.next.is_a? Iterator::Stop).should be_true
+  end
+
+  it "map" do
+    a = Gctest::Observable.from_array [4, 5, 6, 7, 8, 9, 10]
+    b = a.filter {|x| x % 2 == 1}
+      .map {|x| x * x }
+      #.subscribe {|x| puts x}
+    ary = b.to_ary
+    (ary <=> [25, 49, 81]).should eq 0
+  end
+
+  it "observer" do
+    observer = Gctest::Observer.new(
+      ->(x : Int32){ puts x },
+      ->(ex : Exception){ puts "Error: ", ex },
+      ->{ puts "Completed" }
+    )
+    observer = Gctest::Observer.new onNext: ->(x : Int32){ puts x }
+    observer = Gctest::Observer(Int32).new onError: ->(e : Exception){ puts "Error" }
+    observer = Gctest::Observer(Int32).new onComplete: ->(){ puts "Completed." }
+    a = Gctest::Observable.from_array [4, 5, 6]
+    a.subscribe(observer) # この行があると、なぜか 'it "map" do'内のb.mapを呼んだときにエラーが起きる。たぶん、Crystalのバグ?
+    # おそらく、  https://github.com/crystal-lang/crystal/issues/5694   に関連してる。
   end
 end
