@@ -2,6 +2,7 @@ require "./gctest/*"
 require "./*"
 
 puts "start"
+
 a = Gctest::Observable.range(0, 5)
 a = a.repeat(3)
 ary = a.to_ary
