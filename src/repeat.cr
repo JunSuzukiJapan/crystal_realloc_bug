@@ -1,4 +1,4 @@
-module Gctest
+module ReallocBug
   class RepeatIterator(T)
     include Iterator(T)
 

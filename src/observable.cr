@@ -1,5 +1,5 @@
 
-module Gctest
+module ReallocBug
   class Observable(T, U)
     def self.from_array(array : Array(T))
       ColdObservable(T, T).new(ArrayIterator.new array)

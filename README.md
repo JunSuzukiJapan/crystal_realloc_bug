@@ -1,4 +1,4 @@
-# gctest
+# realloc_bug
 
 TODO: Write a description here
 
@@ -8,14 +8,14 @@ Add this to your application's `shard.yml`:
 
 ```yaml
 dependencies:
-  gctest:
-    github: [your-github-name]/gctest
+  realloc_bug:
+    github: [your-github-name]/realloc_bug
 ```
 
 ## Usage
 
 ```crystal
-require "gctest"
+require "realloc_bug"
 ```
 
 TODO: Write usage instructions here
@@ -26,7 +26,7 @@ TODO: Write development instructions here
 
 ## Contributing
 
-1. Fork it ( https://github.com/[your-github-name]/gctest/fork )
+1. Fork it ( https://github.com/[your-github-name]/realloc_bug/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)

@@ -1,4 +1,4 @@
-module Gctest
+module ReallocBug
 
   class Observer(T)
     def initialize(

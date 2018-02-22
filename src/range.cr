@@ -1,4 +1,4 @@
-module Gctest
+module ReallocBug
   class RangeIterator
     include Iterator(Int32)
 

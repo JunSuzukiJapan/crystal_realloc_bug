@@ -42,7 +42,7 @@
             "command": "crystal",
             "args": [
                 "run",
-                "${file}"
+                "${workspaceRoot}/src/realloc_bug.cr"
             ],
             "presentation": {
                 "panel": "new"

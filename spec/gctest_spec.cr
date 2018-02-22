@@ -1,6 +1,6 @@
 require "./spec_helper"
-require "../gctest"
+require "../realloc_bug"
 
-describe Gctest do
+describe ReallocBug do
 
 end
