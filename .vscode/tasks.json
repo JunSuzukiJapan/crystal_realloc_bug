@@ -9,7 +9,7 @@
             "command": "crystal",
             "args": [
                 "build",
-                "${file}"
+                "${workspaceRoot}/src/realloc_bug.cr"
             ],
             "group": {
                 "kind": "build",
