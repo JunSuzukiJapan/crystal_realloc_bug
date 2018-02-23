@@ -1,37 +1,37 @@
 # realloc_bug
 
-TODO: Write a description here
+# Bug Reproduction
 
-## Installation
+Clone or download zip.
+Change dir to project root.
+Run ```crystal run src/realloc_bug.cr```.
 
-Add this to your application's `shard.yml`:
+Then, the error occurs, like below.
 
-```yaml
-dependencies:
-  realloc_bug:
-    github: [your-github-name]/realloc_bug
+```
+Negative size (ArgumentError)
+  from /usr/local/Cellar/crystal-lang/0.24.1_2/src/pointer.cr:0:7 in 'realloc'
+  from /usr/local/Cellar/crystal-lang/0.24.1_2/src/array.cr:1778:7 in 'resize_to_capacity'
+  from /usr/local/Cellar/crystal-lang/0.24.1_2/src/array.cr:1772:5 in 'double_capacity'
+  from /usr/local/Cellar/crystal-lang/0.24.1_2/src/array.cr:1768:5 in 'check_needs_resize'
+  from /usr/local/Cellar/crystal-lang/0.24.1_2/src/array.cr:1344:5 in 'push'
+  from src/observable.cr:18:11 in 'to_ary'
+  from src/realloc_bug.cr:7:5 in '__crystal_main'
+  from /usr/local/Cellar/crystal-lang/0.24.1_2/src/crystal/main.cr:11:3 in '_crystal_main'
+  from /usr/local/Cellar/crystal-lang/0.24.1_2/src/crystal/main.cr:112:5 in 'main_user_code'
+  from /usr/local/Cellar/crystal-lang/0.24.1_2/src/crystal/main.cr:101:7 in 'main'
+  from /usr/local/Cellar/crystal-lang/0.24.1_2/src/crystal/main.cr:135:3 in 'main'
 ```
 
-## Usage
+# crystal version
 
-```crystal
-require "realloc_bug"
+```
+Crystal 0.24.1 (2018-01-27)
+
+LLVM: 5.0.1
+Default target: x86_64-apple-macosx
 ```
 
-TODO: Write usage instructions here
+# os
 
-## Development
-
-TODO: Write development instructions here
-
-## Contributing
-
-1. Fork it ( https://github.com/[your-github-name]/realloc_bug/fork )
-2. Create your feature branch (git checkout -b my-new-feature)
-3. Commit your changes (git commit -am 'Add some feature')
-4. Push to the branch (git push origin my-new-feature)
-5. Create a new Pull Request
-
-## Contributors
-
-- [[your-github-name]](https://github.com/[your-github-name]) JunSuzukiJapan - creator, maintainer
+macOS 10.13.3
