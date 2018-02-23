@@ -2,9 +2,11 @@
 
 # Bug Reproduction
 
-Clone or download zip.
-Change dir to project root.
-Run ```crystal run src/realloc_bug.cr```.
+1. Clone or download zip.
+
+2. Change dir to project root.
+
+3. Run ```crystal run src/realloc_bug.cr```.
 
 Then, the error occurs, like below.
 
